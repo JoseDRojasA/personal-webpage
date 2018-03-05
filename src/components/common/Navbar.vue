@@ -6,39 +6,41 @@
         </button>
     </div>
     <div class="menu-container fullpage full-image" v-bind:class="{'active': showMenu}">
-      <div class="content">
-          <div class="profile-column">
-              <div class="picture-container">
-                  <img src="./../../assets/profile.jpeg">
-              </div>
-              <div class="social-network-container">
-                <a target="_blank" href="https://github.com/JoseDRojasA">
-                    <i class="fab fa-linkedin-in"></i>  
-                </a> 
-                <a target="_blank" href="https://www.linkedin.com/in/josedrojas/">
-                    <i class="fab fa-github"></i>
-                </a>
-              </div>
-              <div class="phone">
-                    <label><i class="fab fa-whatsapp"></i> (+57) 316-748-73-85 </label>
-              </div>
-              <div class="email">
-                  <label><i class="far fa-envelope-open"></i> josedrojas@hotmail.com</label>
-              </div>
+      <div class="content container-fluid">
+          <div class="row">
+            <div class="profile-column col-sm-4">
+                <div class="picture-container">
+                    <img src="./../../assets/profile.jpeg">
+                </div>
+                <div class="social-network-container">
+                    <a target="_blank" href="https://github.com/JoseDRojasA">
+                        <i class="fab fa-linkedin-in"></i>  
+                    </a> 
+                    <a target="_blank" href="https://www.linkedin.com/in/josedrojas/">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+                <div class="phone">
+                        <label><i class="fab fa-whatsapp"></i> (+57) 316-748-73-85 </label>
+                </div>
+                <div class="email">
+                    <label><i class="far fa-envelope-open"></i> josedrojas@hotmail.com</label>
+                </div>
+            </div>
+            <div class="options-container col-sm-8">
+                <ul>
+                    <li v-for="(option, index) in options" :key="index">
+                        {{option.label}}
+                    </li>
+                </ul>
+            </div>
           </div>
-          <div class="options-container">
-              <ul>
-                  <li v-for="(option, index) in options" :key="index">
-                      {{option.label}}
-                  </li>
-              </ul>
-          </div>
-          <div class="menu-btn-container">
+      </div>
+        <div class="menu-btn-container">
             <button class="menu-btn" v-on:click="showMenu = false">
                 <i class="far fa-times-circle"></i>
             </button>
-          </div>
-      </div>
+        </div>
     </div>
   </div>
 
@@ -75,6 +77,9 @@ export default {
     position: fixed;
     right: 0;
     padding: 15px 15px 0px 0px;
+}
+.content {
+    width: 100vw;
 }
 .content .menu-btn-container {
     z-index: 2;
@@ -128,7 +133,6 @@ export default {
 }
 .profile-column {
     height: 100vh;
-    width: 33vw;
     background-color: rgba(63, 81, 181, 0.8);
 }
 .picture-container,
@@ -149,6 +153,9 @@ export default {
     cursor: pointer;
     color: white;
 }
+.picture-container {
+    padding-top: 50%;
+}
 .picture-container img {
     width: 150px;
     height: 150px;
@@ -158,7 +165,6 @@ export default {
 }
 .options-container {
     height: 100vh;
-    width: 77vw;
     background-color: rgba(0, 0, 0, 0.6);
 }
 .fa-bars {
@@ -170,5 +176,17 @@ export default {
     color: white;
     font-size: 30px;
     cursor: pointer;
+}
+
+@media only screen and (max-width: 580px) {
+    .profile-column {
+        height: 350px;
+    }
+    .picture-container {
+        padding-top: 35px;
+    }
+    .options-container ul {
+        padding: 0px;
+    }
 }
 </style>
